@@ -127,3 +127,16 @@ while(True):
         print(i, "--", previous_error - current_error)    
     previous_error = current_error
     i += 1
+    
+with open('output.csv', 'w', newline='') as myfile:
+    """
+        Output the results to csv file
+    """
+    writer = csv.writer(myfile, quoting=csv.QUOTE_ALL)
+    for i in range(len(All_Weights)):
+         output = []
+         output.append(i)
+         for j in range(no_of_weights):
+             output.append(round(All_Weights[i][j], 4))
+         output.append(round(All_Errors[i][0], 4))
+         writer.writerow(output)
